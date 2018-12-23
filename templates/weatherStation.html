@@ -26,6 +26,47 @@
 				<p>This page refreshes every 10 seconds</p>
 				</div>   
 			</div>
-		</div>           
+		</div>
+
+		<!-- radio buttons start here --> 
+		<div class="container">
+			<div class="row">
+			<form id="range_select" action="/env_db" method="GET">
+				<input type="hidden" class="timezone" name="timezone" />
+				<div class="one column">
+					<input type="radio" name="range_h" value="3" id="radio_3"/>
+					<label for="radio_3"> 3hrs </label>
+				</div>
+				<div class="one column">
+					<input type="radio" name="range_h" value="6" id="radio_6"/>
+					<label for="radio_6"> 6hrs </label>
+				</div>
+				<div class="one column">
+					<input type="radio" name="range_h" value="12" id="radio_12"/>
+					<label for="radio_12"> 12hrs </label>
+				</div>
+				<div class="one column">
+					<input type="radio" name="range_h" value="24" id="radio_24"/>
+					<label for="radio_24"> 24hrs </label>
+				</div>
+			</form>  
+			</div>    
+		</div>
 	</body>  
+
+	<!-- import jQuery -->
+	<script src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+	<!-- jstimezonedetect script start -->
+  	<script src="//cdnjs.cloudflare.com/ajax/libs/jstimezonedetect/1.0.6/jstz.min.js" ></script>
+
+	<!-- jQuery code for radio button -->
+	<script>
+		jQuery("#range_select input[type=radio]").click(function() {
+			timezone = jstz.determine();
+        	jQuery(".timezone").val(timezone.name());
+			jQuery("#range_select").submit();
+		});
+	</script>
+	<!-- radio button code end -->
 </html>
